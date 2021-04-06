@@ -5,7 +5,7 @@
 -- Dumped from database version 13.2
 -- Dumped by pg_dump version 13.2
 
--- Started on 2021-04-01 12:13:29
+-- Started on 2021-04-06 21:20:48
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -104,9 +104,7 @@ ALTER TABLE public.usuario OWNER TO postgres;
 -- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.account (platform, username, pass, accountid, url) FROM stdin;
-1	Twitter	@Kharuso	1234	https://twitter.com/Carcisco97
-\.
+INSERT INTO public.account (platform, username, pass, accountid, url) VALUES ('Twitter', '@Kharuso1', '1234', 1, 'https://twitter.com/Kharuso1');
 
 
 --
@@ -115,9 +113,7 @@ COPY public.account (platform, username, pass, accountid, url) FROM stdin;
 -- Data for Name: art; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.art (artid, title, description, author, url, tags) FROM stdin;
-1	Mi obra	Una obra increible	Kharuso	https://twitter.com/Carcisco97	3dprint
-\.
+INSERT INTO public.art (artid, title, description, author, url, tags) VALUES (1, 'Mi obra', 'Una obra increible', 'Kharuso', 'https://twitter.com/Carcisco97', '3dprint');
 
 
 --
@@ -126,8 +122,7 @@ COPY public.art (artid, title, description, author, url, tags) FROM stdin;
 -- Data for Name: user_account; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.user_account (code_user, code_account) FROM stdin;
-\.
+INSERT INTO public.user_account (code_user, code_account) VALUES (1, 1);
 
 
 --
@@ -136,8 +131,7 @@ COPY public.user_account (code_user, code_account) FROM stdin;
 -- Data for Name: user_art; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.user_art (code_user, code_art) FROM stdin;
-\.
+INSERT INTO public.user_art (code_user, code_art) VALUES (1, 1);
 
 
 --
@@ -146,9 +140,7 @@ COPY public.user_art (code_user, code_art) FROM stdin;
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuario (userid, username, pass, description, pics, join_date) FROM stdin;
-1	Kharuso	1234	Soy Carlos	https://twitter.com/Carcisco97	29-03-2021
-\.
+INSERT INTO public.usuario (userid, username, pass, description, pics, join_date) VALUES (1, 'Kharuso', '1234', 'Soy Carlos', 'https://twitter.com/Carcisco97', '29-03-2021');
 
 
 --
@@ -232,7 +224,7 @@ ALTER TABLE ONLY public.user_art
     ADD CONSTRAINT user_art_fk_user FOREIGN KEY (code_user) REFERENCES public.usuario(userid);
 
 
--- Completed on 2021-04-01 12:13:30
+-- Completed on 2021-04-06 21:20:48
 
 --
 -- PostgreSQL database dump complete
