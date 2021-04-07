@@ -28,4 +28,22 @@ public class UserServiceImpl implements IUserService {
 		return userDao.findById(id).orElse(null);
 	}
 	
+	@Override
+	@Transactional
+	public User save(User user) {
+		return userDao.save(user);
+	}
+	
+	@Override
+	@Transactional
+	public void delete(User user) {
+		userDao.delete(user);		
+	}
+	
+	@Override
+	@Transactional
+	public void deleteById(int id) {
+		userDao.deleteById(id);		
+	}
+	
 }
