@@ -6,26 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.carlos.artgallery.models.dao.IUserDao;
-import com.carlos.artgallery.models.entities.User;
+import com.carlos.artgallery.models.dao.IArtDao;
+import com.carlos.artgallery.models.entities.Art;
 
 @Service
-public class UserServiceImpl implements IUserService {
+public class ArtServiceImpl implements IArtService {
 
 	@Autowired
-	private IUserDao userDao;
+	private IArtDao artDao;
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<User> findAll() {
-		return (List<User>) userDao.findAll();
+	public List<Art> findAll() {
+		return (List<Art>) artDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly=true)
-	public User findById(Integer id) {
+	public Art findById(Integer id) {
 		// TODO Auto-generated method stub
-		return userDao.findById(id).orElse(null);
+		return artDao.findById(id).orElse(null);
 	}
 	
 }
