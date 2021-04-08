@@ -1,5 +1,6 @@
 package com.carlos.artgallery.controllers;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +58,7 @@ public class ArtController {
 	@PostMapping("/arts")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Art create(@RequestBody Art art) {
+		art.setArtDate(new Date().toString());
 		artService.save(art);
 		return art;
 	}
@@ -71,6 +73,7 @@ public class ArtController {
 		artActual.setTitle(art.getTitle());
 		artActual.setDescription(art.getDescription());
 		artActual.setLikes(art.getLikes());
+		artActual.setArtDate(art.getArtDate());
 		artActual.setUrl(art.getUrl());
 		artActual.setUsuario(art.getUsuario());
 		artService.save(artActual);

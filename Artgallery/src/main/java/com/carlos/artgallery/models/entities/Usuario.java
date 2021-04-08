@@ -1,5 +1,5 @@
 package com.carlos.artgallery.models.entities;
-// Generated 8 abr. 2021 17:12:20 by Hibernate Tools 5.2.12.Final
+// Generated 8 abr. 2021 23:00:46 by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;

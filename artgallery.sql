@@ -70,6 +70,7 @@ CREATE TABLE public.art (
     url character varying(10485760),
     tags character varying(100),
     likes integer,
+    art_date character varying(100) NOT NULL,
     user_id integer,
     FOREIGN KEY (user_id) REFERENCES public.usuario(user_id) ON DELETE CASCADE
 );
@@ -110,7 +111,7 @@ INSERT INTO public.account (platform, username, pass, url, user_id) VALUES ('Twi
 -- Data for Name: art; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.art (title, description, author, url, tags, likes, user_id) VALUES ('Mi obra', 'Una obra increible', 'Kharuso', 'https://twitter.com/Carcisco97', '3dprint', 0, 1);
+INSERT INTO public.art (title, description, author, url, tags, likes, art_date, user_id) VALUES ('Mi obra', 'Una obra increible', 'Kharuso', 'https://twitter.com/Carcisco97', '3dprint', 0, '08-04-2021', 1);
 
 INSERT INTO public.comment(user_id,commentary,likes,comment_date) VALUES (1,'Muy bien la obra la verdad, y no lo digo porque sea mia',1,'08-04-2021');
 

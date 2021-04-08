@@ -1,5 +1,5 @@
 package com.carlos.artgallery.models.entities;
-// Generated 8 abr. 2021 17:12:20 by Hibernate Tools 5.2.12.Final
+// Generated 8 abr. 2021 23:00:46 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,16 +28,18 @@ public class Art implements java.io.Serializable {
 	private String url;
 	private String tags;
 	private Integer likes;
+	private String artDate;
 
 	public Art() {
 	}
 
-	public Art(int artId) {
+	public Art(int artId, String artDate) {
 		this.artId = artId;
+		this.artDate = artDate;
 	}
 
 	public Art(int artId, Usuario usuario, String title, String description, String author, String url, String tags,
-			Integer likes) {
+			Integer likes, String artDate) {
 		this.artId = artId;
 		this.usuario = usuario;
 		this.title = title;
@@ -46,6 +48,7 @@ public class Art implements java.io.Serializable {
 		this.url = url;
 		this.tags = tags;
 		this.likes = likes;
+		this.artDate = artDate;
 	}
 
 	@Id
@@ -121,6 +124,15 @@ public class Art implements java.io.Serializable {
 
 	public void setLikes(Integer likes) {
 		this.likes = likes;
+	}
+
+	@Column(name = "art_date", nullable = false, length = 100)
+	public String getArtDate() {
+		return this.artDate;
+	}
+
+	public void setArtDate(String artDate) {
+		this.artDate = artDate;
 	}
 
 }
