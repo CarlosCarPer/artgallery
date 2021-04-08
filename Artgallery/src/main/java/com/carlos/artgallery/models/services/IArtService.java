@@ -8,5 +8,8 @@ public interface IArtService {
 
 	public List<Art> findAll();
 	public Art findById(Integer id);
+	public Art save(Art art);
+	public void delete(Art art);
+	public void deleteById(int id);
 	
 }

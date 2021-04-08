@@ -28,4 +28,22 @@ public class AccountServiceImpl implements IAccountService {
 		return accountDao.findById(id).orElse(null);
 	}
 	
+	@Override
+	@Transactional
+	public Account save(Account account) {
+		return accountDao.save(account);
+	}
+	
+	@Override
+	@Transactional
+	public void delete(Account account) {
+		accountDao.delete(account);		
+	}
+	
+	@Override
+	@Transactional
+	public void deleteById(int id) {
+		accountDao.deleteById(id);		
+	}
+	
 }

@@ -28,4 +28,22 @@ public class ArtServiceImpl implements IArtService {
 		return artDao.findById(id).orElse(null);
 	}
 	
+	@Override
+	@Transactional
+	public Art save(Art art) {
+		return artDao.save(art);
+	}
+	
+	@Override
+	@Transactional
+	public void delete(Art art) {
+		artDao.delete(art);		
+	}
+	
+	@Override
+	@Transactional
+	public void deleteById(int id) {
+		artDao.deleteById(id);		
+	}
+	
 }

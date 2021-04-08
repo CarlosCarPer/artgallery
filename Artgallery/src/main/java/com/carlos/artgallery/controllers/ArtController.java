@@ -8,9 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.carlos.artgallery.models.entities.Art;
@@ -47,6 +52,37 @@ public class ArtController {
 		}
 		// Hemos buscado el ID y SI que existe
 		return new ResponseEntity<Art>(art,HttpStatus.OK);
+	}
+	
+	@PostMapping("/arts")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Art create(@RequestBody Art art) {
+		artService.save(art);
+		return art;
+	}
+	
+	@PutMapping("/arts/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Art update(@RequestBody Art art, @PathVariable int id) {
+		Art artActual = artService.findById(id);
+		artActual.setArtId(art.getArtId());
+		artActual.setAuthor(art.getAuthor());
+		artActual.setTags(art.getTags());
+		artActual.setTitle(art.getTitle());
+		artActual.setDescription(art.getDescription());
+		artActual.setLikes(art.getLikes());
+		artActual.setUrl(art.getUrl());
+		artActual.setUsuario(art.getUsuario());
+		artService.save(artActual);
+		return artActual;
+	}
+	
+	@DeleteMapping("/arts/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void borrar(@PathVariable int id){
+		/*Art artActual = artService.findById(id);
+		artService.delete(artActual);*/
+		artService.deleteById(id);
 	}
 	
 }

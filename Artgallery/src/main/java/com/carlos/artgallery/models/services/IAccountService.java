@@ -8,5 +8,8 @@ public interface IAccountService {
 
 	public List<Account> findAll();
 	public Account findById(Integer id);
+	public Account save(Account Account);
+	public void delete(Account Account);
+	public void deleteById(int id);
 	
 }

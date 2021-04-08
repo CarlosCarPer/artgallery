@@ -8,9 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.carlos.artgallery.models.entities.Account;
@@ -47,6 +52,35 @@ public class AccountController {
 		}
 		// Hemos buscado el ID y SI que existe
 		return new ResponseEntity<Account>(account,HttpStatus.OK);
+	}
+	
+	@PostMapping("/accounts")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Account create(@RequestBody Account account) {
+		accountService.save(account);
+		return account;
+	}
+	
+	@PutMapping("/accounts/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Account update(@RequestBody Account account, @PathVariable int id) {
+		Account accountActual = accountService.findById(id);
+		accountActual.setAccountId(account.getAccountId());
+		accountActual.setPass(account.getPass());
+		accountActual.setPlatform(account.getPlatform());
+		accountActual.setUrl(account.getUrl());
+		accountActual.setUsername(account.getUsername());
+		accountActual.setUsuario(account.getUsuario());
+		accountService.save(accountActual);
+		return accountActual;
+	}
+	
+	@DeleteMapping("/accounts/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void borrar(@PathVariable int id){
+		/*Account accountActual = accountService.findById(id);
+		accountService.delete(accountActual);*/
+		accountService.deleteById(id);
 	}
 	
 }
