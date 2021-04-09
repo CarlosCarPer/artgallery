@@ -1,3 +1,5 @@
+import { Art } from "./art";
+
 export interface Usuario {
 
   userid?: number;
