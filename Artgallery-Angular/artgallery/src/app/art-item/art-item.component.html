@@ -1,0 +1,12 @@
+<img class="card-img-top" [src]="art.url" />
+<div class="card-body">
+  <h4 class="card-title">{{ art.title | titlecase }}</h4>
+  <p class="card-text" [innerText]="art.description"></p>
+  <div>
+    <button class="btn btn-danger ml-3" (click)="deleteArt()">Delete</button>
+  </div>
+</div>
+<div class="card-footer text-muted">
+  {{ art.artdate | date: "dd/MM/yyyy" }}
+  <span class="float-right">{{ art.likes }}</span>
+</div>

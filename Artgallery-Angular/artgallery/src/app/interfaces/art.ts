@@ -5,7 +5,7 @@ export interface Art {
   description: string;
   author: string;
   url: string;
-  tags: string;
+  tags: string[];
   likes: number;
   artdate: string;
   userid: number;

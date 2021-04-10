@@ -1,25 +1,35 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
-import { UsuarioComponent } from './usuario/usuario.component';
-import { AppRoutingModule } from './app-routing.module';
-import { ArtFilterPipe } from './pipes/art-filter.pipe';
 import { ArtListComponent } from './art-list/art-list.component';
 import { FormsModule } from '@angular/forms';
+import { ArtFilterPipe } from './pipes/art-filter.pipe';
+import { ArtItemComponent } from './art-item/art-item.component';
+import { ArtAddComponent } from './art-add/art-add.component';
+import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsuarioComponent,
+    ArtListComponent,
     ArtFilterPipe,
-    ArtListComponent
+    ArtItemComponent,
+    ArtAddComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BaseUrlInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

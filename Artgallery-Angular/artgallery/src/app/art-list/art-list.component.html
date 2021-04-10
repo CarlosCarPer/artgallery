@@ -1,3 +1,5 @@
+<art-add (added)="addArt($event)"></art-add>
+
 <nav class="navbar navbar-light bg-light justify-content-between mt-3">
   <ul class="nav nav-pills">
     <li class="nav-item">
@@ -7,7 +9,6 @@
       <a class="nav-link" href="#" (click)="orderLikes()">Orden por likes</a>
     </li>
   </ul>
-
   <form class="form-inline">
     <input
       class="form-control mr-sm-2"
@@ -18,24 +19,19 @@
       aria-label="Search"
     />
   </form>
-
-
 </nav>
-
-<div class="card-columns mt-4" *ngIf="artes && artes.length; else noArtes"
+<div
+  class="card-columns mt-4"
+  *ngIf="arts && arts.length; else noArts"
 >
-  <div class="card" *ngFor="let arte of artes | artFilter: search">
-    <img class="card-img-top" [src]="arte.url" />
-    <div class="card-body">
-      <h4 class="card-title">{{ arte.title }}</h4>
-      <p class="card-text" [innerText]="arte.description"></p>
-    </div>
-    <div class="card-footer text-muted">
-      {{ arte.artdate | date: "dd/MM/yyyy" }}
-      <span class="float-right">{{ arte.description }}</span>
-    </div>
-  </div>
+  <art-item
+    class="card"
+    [art]="art"
+    (deleted)="deleteArt(art)"
+    *ngFor="let art of arts | artFilter: search"
+  >
+  </art-item>
 </div>
-<ng-template #noArtes>
-  <h3>No hay artes disponibles</h3>
+<ng-template #noArts>
+  <h3>No hay arts disponibles</h3>
 </ng-template>
