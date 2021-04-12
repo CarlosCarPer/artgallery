@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.carlos.artgallery.models.entities.Art;
 import com.carlos.artgallery.models.services.IArtService;
+import com.carlos.artgallery.models.services.IUsuarioService;
 
 @CrossOrigin(origins= {"*"}, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS}, allowedHeaders = {"Access-Control-Allow-Headers","Access-Control-Allow-Origin","Access-Control-Request-Method", "Access-Control-Request-Headers","Origin","Cache-Control", "Content-Type", "Authorization"})
 @RestController
@@ -28,6 +29,9 @@ public class ArtController {
 	
 	@Autowired
 	private IArtService artService;
+	
+	@Autowired
+	private IUsuarioService userService;
 	
 	@GetMapping("/arts")
 	public List<Art> index(){
@@ -55,10 +59,13 @@ public class ArtController {
 		return new ResponseEntity<Art>(art,HttpStatus.OK);
 	}
 	
-	@PostMapping("/arts")
+	@PostMapping("/arts/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Art create(@RequestBody Art art) {
+	public Art create(@RequestBody Art art, @PathVariable int id) {
+		art.setUsuario(userService.findById(id));
 		art.setArtDate(new Date().toString());
+		art.setAuthor(userService.findById(id).getUsername());
+		art.setLikes(0);
 		artService.save(art);
 		return art;
 	}
@@ -67,15 +74,9 @@ public class ArtController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Art update(@RequestBody Art art, @PathVariable int id) {
 		Art artActual = artService.findById(id);
-		artActual.setArtId(art.getArtId());
-		artActual.setAuthor(art.getAuthor());
 		artActual.setTags(art.getTags());
 		artActual.setTitle(art.getTitle());
 		artActual.setDescription(art.getDescription());
-		artActual.setLikes(art.getLikes());
-		artActual.setArtDate(art.getArtDate());
-		artActual.setUrl(art.getUrl());
-		artActual.setUsuario(art.getUsuario());
 		artService.save(artActual);
 		return artActual;
 	}

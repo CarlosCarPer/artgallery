@@ -12,12 +12,11 @@ export class ArtsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Art[]> {
-    return this.http.get<Art[] >('arts')
-
+    return this.http.get<Art[]>('arts');
   }
 
-  insert(art: Art): Observable<Art> {
-    return this.http.post<Art>('arts', art)
+  insert(art: Art, id: number): Observable<Art> {
+    return this.http.post<Art>(`arts/${id}`, art);
   }
 
   delete(id: number): Observable<void> {

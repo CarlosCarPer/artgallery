@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.carlos.artgallery.models.entities.Account;
 import com.carlos.artgallery.models.services.IAccountService;
+import com.carlos.artgallery.models.services.IUsuarioService;
 
 @CrossOrigin(origins= {"*"}, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS}, allowedHeaders = {"Access-Control-Allow-Headers","Access-Control-Allow-Origin","Access-Control-Request-Method", "Access-Control-Request-Headers","Origin","Cache-Control", "Content-Type", "Authorization"})
 @RestController
@@ -27,6 +28,9 @@ public class AccountController {
 	
 	@Autowired
 	private IAccountService accountService;
+	
+	@Autowired
+	private IUsuarioService userService;
 	
 	@GetMapping("/accounts")
 	public List<Account> index(){
@@ -54,9 +58,10 @@ public class AccountController {
 		return new ResponseEntity<Account>(account,HttpStatus.OK);
 	}
 	
-	@PostMapping("/accounts")
+	@PostMapping("/accounts/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Account create(@RequestBody Account account) {
+	public Account create(@RequestBody Account account, @PathVariable int id) {
+		account.setUsuario(userService.findById(id));
 		accountService.save(account);
 		return account;
 	}
@@ -65,12 +70,10 @@ public class AccountController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Account update(@RequestBody Account account, @PathVariable int id) {
 		Account accountActual = accountService.findById(id);
-		accountActual.setAccountId(account.getAccountId());
 		accountActual.setPass(account.getPass());
 		accountActual.setPlatform(account.getPlatform());
 		accountActual.setUrl(account.getUrl());
 		accountActual.setUsername(account.getUsername());
-		accountActual.setUsuario(account.getUsuario());
 		accountService.save(accountActual);
 		return accountActual;
 	}

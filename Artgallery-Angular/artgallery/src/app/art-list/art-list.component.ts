@@ -19,10 +19,10 @@ export class ArtListComponent implements OnInit {
     );
   }
 
-  orderDate(): void {
-    this.arts.sort((e1, e2) => e1.artdate.localeCompare(e2.artdate));
-    this.arts = [...this.arts];
-  }
+  // orderDate(): void {
+  //   this.arts.sort((e1, e2) => e1.artdate.localeCompare(e2.artdate));
+  //   this.arts = [...this.arts];
+  // }
 
   orderLikes(): void {
     this.arts.sort((e1, e2) => e1.likes - e2.likes);

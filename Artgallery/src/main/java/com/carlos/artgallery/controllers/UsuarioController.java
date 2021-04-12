@@ -67,14 +67,10 @@ public class UsuarioController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario update(@RequestBody Usuario user, @PathVariable int id) {
 		Usuario userActual = userService.findById(id);
-		userActual.setAccounts(user.getAccounts());
-		userActual.setArts(user.getArts());
 		userActual.setDescription(user.getDescription());
-		userActual.setJoinDate(user.getJoinDate());
-		userActual.setPass(user.getPass());
 		userActual.setPics(user.getPics());
-		userActual.setUserId(user.getUserId());
 		userActual.setUsername(user.getUsername());
+		userActual.setAvatar(user.getAvatar());
 		userService.save(userActual);
 		return userActual;
 	}

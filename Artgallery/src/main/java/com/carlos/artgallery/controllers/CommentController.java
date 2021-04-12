@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.carlos.artgallery.models.entities.Comment;
 import com.carlos.artgallery.models.services.ICommentService;
+import com.carlos.artgallery.models.services.IUsuarioService;
 
 @CrossOrigin(origins= {"*"}, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS}, allowedHeaders = {"Access-Control-Allow-Headers","Access-Control-Allow-Origin","Access-Control-Request-Method", "Access-Control-Request-Headers","Origin","Cache-Control", "Content-Type", "Authorization"})
 @RestController
@@ -28,6 +29,9 @@ public class CommentController {
 	
 	@Autowired
 	private ICommentService commentService;
+	
+	@Autowired
+	private IUsuarioService userService;
 	
 	@GetMapping("/comments")
 	public List<Comment> index(){
@@ -55,10 +59,22 @@ public class CommentController {
 		return new ResponseEntity<Comment>(comment,HttpStatus.OK);
 	}
 	
-	@PostMapping("/comments")
+	@PostMapping("/comments/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Comment create(@RequestBody Comment comment) {
+	public Comment create(@RequestBody Comment comment, @PathVariable int id) {
 		comment.setCommentDate(new Date().toString());
+		comment.setUsuario(userService.findById(id));
+		comment.setLikes(0);
+		commentService.save(comment);
+		return comment;
+	}
+	
+	@PostMapping("/comments/{replyid}/{userid}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Comment create(@RequestBody Comment comment, @PathVariable int replyid, @PathVariable int userid) {
+		comment.setCommentDate(new Date().toString());
+		comment.setUsuario(userService.findById(userid));
+		comment.setComment(commentService.findById(replyid));
 		commentService.save(comment);
 		return comment;
 	}
@@ -67,13 +83,7 @@ public class CommentController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Comment update(@RequestBody Comment comment, @PathVariable int id) {
 		Comment commentActual = commentService.findById(id);
-		commentActual.setComment(comment.getComment());
 		commentActual.setCommentary(comment.getCommentary());
-		commentActual.setComments(comment.getComments());
-		commentActual.setCommentDate(comment.getCommentDate());
-		commentActual.setCommentId(comment.getCommentId());
-		commentActual.setLikes(comment.getLikes());
-		commentActual.setUsuario(comment.getUsuario());
 		commentService.save(commentActual);
 		return commentActual;
 	}

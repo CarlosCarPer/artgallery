@@ -1,3 +1,4 @@
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Art } from '../interfaces/art';
 import { ArtsService } from '../services/arts.service';
@@ -9,7 +10,14 @@ import { ArtsService } from '../services/arts.service';
 })
 export class ArtAddComponent implements OnInit {
   nombreImagen = '';
-  newArt!: Art;
+  tags: string[] = ['etiqueta11','etiqueta2'];
+  newArt: Art = {
+      title: '',
+      description: '',
+      url: '',
+      tags: '',
+      likes: 0
+  };
   @Output() added = new EventEmitter<Art>();
 
   constructor(private artsService: ArtsService) { }
@@ -19,12 +27,13 @@ export class ArtAddComponent implements OnInit {
   }
 
   addArt(): void {
-    this.artsService.insert(this.newArt).subscribe(
+    this.artsService.insert(this.newArt, 1).subscribe(
       art => {
         this.added.emit(art);
         this.resetForm();
       }
     );
+    // tags = this.newArt.tags.fore
   }
 
   changeImage(fileInput: HTMLInputElement): void {
@@ -40,15 +49,11 @@ export class ArtAddComponent implements OnInit {
 
   resetForm(): void {
     this.newArt = {
-      artid: 0,
       title: '',
       description: '',
-      author: '',
       url: '',
-      tags: [''],
-      likes:0,
-      artdate: '',
-      userid: 0
+      tags: '',
+      likes: 0
     };
     this.nombreImagen = '';
   }
