@@ -1,5 +1,5 @@
 package com.carlos.artgallery.models.entities;
-// Generated 8 abr. 2021 23:00:46 by Hibernate Tools 5.2.12.Final
+// Generated 12 abr. 2021 10:58:46 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,8 +35,11 @@ public class Art implements java.io.Serializable {
 	public Art() {
 	}
 
-	public Art(int artId, String artDate) {
+	public Art(int artId, Usuario usuario, String title, String author, String artDate) {
 		this.artId = artId;
+		this.usuario = usuario;
+		this.title = title;
+		this.author = author;
 		this.artDate = artDate;
 	}
 
@@ -65,7 +68,7 @@ public class Art implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id", nullable = false)
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
@@ -74,7 +77,7 @@ public class Art implements java.io.Serializable {
 		this.usuario = usuario;
 	}
 
-	@Column(name = "title", length = 100)
+	@Column(name = "title", nullable = false, length = 100)
 	public String getTitle() {
 		return this.title;
 	}
@@ -92,7 +95,7 @@ public class Art implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "author", length = 100)
+	@Column(name = "author", nullable = false, length = 100)
 	public String getAuthor() {
 		return this.author;
 	}

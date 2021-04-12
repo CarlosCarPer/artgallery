@@ -1,5 +1,5 @@
 package com.carlos.artgallery.models.entities;
-// Generated 8 abr. 2021 23:00:46 by Hibernate Tools 5.2.12.Final
+// Generated 12 abr. 2021 11:03:18 by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,6 +26,7 @@ public class Usuario implements java.io.Serializable {
 	private String description;
 	private String pics;
 	private String joinDate;
+	private String avatar;
 	private Set<Art> arts = new HashSet<Art>();
 	private Set<Account> accounts = new HashSet<Account>();
 	private Set<Comment> comments = new HashSet<Comment>();
@@ -33,19 +34,22 @@ public class Usuario implements java.io.Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(int userId, String joinDate) {
+	public Usuario(int userId, String username, String pass, String joinDate) {
 		this.userId = userId;
+		this.username = username;
+		this.pass = pass;
 		this.joinDate = joinDate;
 	}
 
-	public Usuario(int userId, String username, String pass, String description, String pics, String joinDate, Set<Art> arts,
-			Set<Account> accounts, Set<Comment> comments) {
+	public Usuario(int userId, String username, String pass, String description, String pics, String joinDate,
+			String avatar, Set<Art> arts, Set<Account> accounts, Set<Comment> comments) {
 		this.userId = userId;
 		this.username = username;
 		this.pass = pass;
 		this.description = description;
 		this.pics = pics;
 		this.joinDate = joinDate;
+		this.avatar = avatar;
 		this.arts = arts;
 		this.accounts = accounts;
 		this.comments = comments;
@@ -62,7 +66,7 @@ public class Usuario implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	@Column(name = "username", length = 100)
+	@Column(name = "username", nullable = false, length = 100)
 	public String getUsername() {
 		return this.username;
 	}
@@ -71,7 +75,7 @@ public class Usuario implements java.io.Serializable {
 		this.username = username;
 	}
 
-	@Column(name = "pass", length = 100)
+	@Column(name = "pass", nullable = false, length = 100)
 	public String getPass() {
 		return this.pass;
 	}
@@ -105,6 +109,15 @@ public class Usuario implements java.io.Serializable {
 
 	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
+	}
+
+	@Column(name = "avatar", length = 10485760)
+	public String getAvatar() {
+		return this.avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
