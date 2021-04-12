@@ -8,3 +8,6 @@ export interface ArtResponse {
   art: Art;
 }
 
+export interface TokenResponse {
+  accessToken: string;
+}

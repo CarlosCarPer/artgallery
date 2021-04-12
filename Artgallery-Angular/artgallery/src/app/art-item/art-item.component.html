@@ -1,12 +1,22 @@
 <img class="card-img-top" [src]="art.url" />
 <div class="card-body">
-  <h4 class="card-title">{{ art.title | titlecase }}</h4>
+  <h4 class="card-title">
+    <a [routerLink]="['/arts', art.artid]">{{ art.title | titlecase }}</a>
+  </h4>
   <p class="card-text" [innerText]="art.description"></p>
-  <div>
-    <button class="btn btn-danger ml-3" (click)="deleteArt()">Delete</button>
+  <div class="row mr-4 align-items-center">
+    <img
+      [src]="art.user.avatar"
+      class="rounded-circle col"
+      style="width: 50px"
+    />
+    <div class="col">
+      <small>{{ art.user.username }}</small>
+    </div>
+    <button class="btn btn-danger col" (click)="deleteArt()">Delete</button>
   </div>
 </div>
 <div class="card-footer text-muted">
   {{ art.artdate | date: "dd/MM/yyyy" }}
-  <span class="float-right">{{ art.likes }}</span>
+  <span class="float-right">{{ art.likes}}</span>
 </div>

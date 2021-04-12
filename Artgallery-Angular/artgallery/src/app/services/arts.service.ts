@@ -15,6 +15,12 @@ export class ArtsService {
     return this.http.get<Art[]>('arts');
   }
 
+  get(id: number): Observable<Art> {
+    return this.http.get<ArtResponse>('arts/' + id).pipe(
+      map(resp => resp.art)
+    );
+  }
+
   insert(art: Art, id: number): Observable<Art> {
     return this.http.post<Art>(`arts/${id}`, art);
   }
