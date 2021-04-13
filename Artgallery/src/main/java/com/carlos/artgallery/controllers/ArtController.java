@@ -63,7 +63,7 @@ public class ArtController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Art create(@RequestBody Art art, @PathVariable int id) {
 		art.setUsuario(userService.findById(id));
-		art.setArtDate(new Date().toString());
+		art.setArtDate(new Date());
 		art.setAuthor(userService.findById(id).getUsername());
 		art.setLikes(0);
 		artService.save(art);

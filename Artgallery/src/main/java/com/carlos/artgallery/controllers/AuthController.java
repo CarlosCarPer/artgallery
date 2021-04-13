@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import com.carlos.artgallery.models.security.SecurityConstants;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.carlos.artgallery.models.dto.ResponseLoginDto;
+import com.carlos.artgallery.models.dto.UsuarioLoginDto;
+import com.carlos.artgallery.models.dto.UsuarioRegisterDto;
 import com.carlos.artgallery.models.entities.Usuario;
 import com.carlos.artgallery.models.services.IUsuarioService;
 
@@ -30,7 +34,7 @@ public class AuthController {
 
 	@PostMapping("/login")
 	public ResponseEntity<ResponseLoginDto> login(@RequestBody UsuarioLoginDto userLogin) throws NoSuchAlgorithmException {
-		Usuario user = usersService.login(userLogin.getEmail(), userLogin.getPassword());
+		Usuario user = usersService.login(userLogin.getUsername(), userLogin.getPassword());
 
 		if (user != null) {
 			return ResponseEntity.ok().body(new ResponseLoginDto(getToken(user)));
@@ -57,7 +61,7 @@ public class AuthController {
 		data.put("username", user.getUsername());
 		data.put("authorities", Arrays.asList("ROLE_USER"));
 
-		String token = Jwts.builder().setId("springEventos").setSubject(user.getName()).addClaims(data)
+		String token = Jwts.builder().setId("springEventos").setSubject(user.getUsername()).addClaims(data)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 6000000))
 				.signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET_KEY).compact();
