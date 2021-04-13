@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Art } from '../interfaces/art';
 import { Router } from '@angular/router';
 import { ArtsService } from '../services/arts.service';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'art-add',
@@ -19,23 +20,25 @@ export class ArtAddComponent implements OnInit {
       tags: '',
       likes: 0
   };
+  userid=1;
   @Output() added = new EventEmitter<Art>();
 
-  constructor(private artsService: ArtsService,private router: Router) { }
+  constructor(private artsService: ArtsService, private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
     this.resetForm();
   }
 
   addArt(): void {
+    this.usuarioService.get(this.userid).subscribe(
+      user=>this.newArt.user=user
+    );
     this.artsService.insert(this.newArt, 1).subscribe(
       art => this.router.navigate(['/artes'])
     );
     // tags = this.newArt.tags.fore
-
-
-
   }
+
 
   changeImage(fileInput: HTMLInputElement): void {
     if (!fileInput.files || fileInput.files.length === 0) {
