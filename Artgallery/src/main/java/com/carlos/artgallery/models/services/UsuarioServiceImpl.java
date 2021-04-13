@@ -58,7 +58,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 	@Override
 	public Usuario login(String username, String password) throws NoSuchAlgorithmException{
-		return this.usersRepository.login(username, securityUtils.encodePassword(password));
+		//return this.usersRepository.login(username, securityUtils.encodePassword(password));
+		return this.usersRepository.login(username, password);
 	}
 	
 	@Override

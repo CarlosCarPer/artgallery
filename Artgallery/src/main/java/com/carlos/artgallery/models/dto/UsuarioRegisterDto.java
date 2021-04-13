@@ -7,7 +7,7 @@ public class UsuarioRegisterDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
-	private String avatar;
+	private String joinDate;
 	
 	public String getName() {
 		return username;
@@ -26,10 +26,10 @@ public class UsuarioRegisterDto implements Serializable {
 	}
 	
 	public String getAvatar() {
-		return avatar;
+		return joinDate;
 	}
 	
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
+	public void setAvatar(String joinDate) {
+		this.joinDate = joinDate;
 	}
 }

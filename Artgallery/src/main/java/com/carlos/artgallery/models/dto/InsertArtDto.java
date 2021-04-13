@@ -2,11 +2,11 @@ package com.carlos.artgallery.models.dto;
 
 import java.time.LocalDate;
 
-public class InsertEventoDto {
+public class InsertArtDto {
 	private String name;
 	private String description;
 	private String image;
-	private double price;
+	private int likes;
 	private LocalDate date;
 	
 	public String getName() {
@@ -34,11 +34,11 @@ public class InsertEventoDto {
 	}
 	
 	public double getPrice() {
-		return price;
+		return likes;
 	}
 	
-	public void setPrice(double price) {
-		this.price = price;
+	public void setPrice(int likes) {
+		this.likes = likes;
 	}
 	
 	public LocalDate getDate() {

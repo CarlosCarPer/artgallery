@@ -9,6 +9,6 @@ import com.carlos.artgallery.models.entities.Usuario;
 
 @Repository
 public interface UsuariosRepository extends CrudRepository<Usuario, Long> {
-	@Query("select u from Usuario u where email = ?1 and password = ?2")
-	public Usuario login(String email, String password);
+	@Query("select u from Usuario u where username = ?1 and pass = ?2")
+	public Usuario login(String username, String pass);
 }

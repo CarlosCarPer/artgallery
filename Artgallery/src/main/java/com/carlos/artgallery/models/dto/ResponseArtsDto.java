@@ -3,17 +3,17 @@ package com.carlos.artgallery.models.dto;
 import java.util.List;
 
 public class ResponseArtsDto {
-	private List<ArtDto> eventos;
+	private List<ArtDto> arts;
 
-	public ResponseArtsDto(List<ArtDto> eventos) {
-		this.eventos = eventos;
+	public ResponseArtsDto(List<ArtDto> arts) {
+		this.arts = arts;
 	}
 
 	public List<ArtDto> getArts() {
-		return eventos;
+		return arts;
 	}
 
-	public void setArts(List<ArtDto> eventos) {
-		this.eventos = eventos;
+	public void setArts(List<ArtDto> arts) {
+		this.arts = arts;
 	}
 }
