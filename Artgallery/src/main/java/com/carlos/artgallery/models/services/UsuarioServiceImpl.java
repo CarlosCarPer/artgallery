@@ -1,6 +1,7 @@
 package com.carlos.artgallery.models.services;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,16 +59,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 	@Override
 	public Usuario login(String username, String password) throws NoSuchAlgorithmException{
-		//return this.usersRepository.login(username, securityUtils.encodePassword(password));
-		return this.usersRepository.login(username, password);
+		return this.usersRepository.login(username, securityUtils.encodePassword(password));
+		//return this.usersRepository.login(username, password);
 	}
 	
 	@Override
 	public void register(UsuarioRegisterDto userDto) throws NoSuchAlgorithmException {
 		Usuario user = new Usuario();
-		user.setAvatar(imageUtils.saveImageBase64("users", userDto.getAvatar()));
+		user.setJoinDate(new Date().toString());
 		user.setPass(securityUtils.encodePassword(userDto.getPassword()));
-		user.setUsername(userDto.getName());
+		user.setUsername(userDto.getUsername());
 		
 		this.usersRepository.save(user);
 	}

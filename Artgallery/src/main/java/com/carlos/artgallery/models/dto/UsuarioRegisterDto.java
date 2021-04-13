@@ -7,13 +7,12 @@ public class UsuarioRegisterDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
-	private String joinDate;
 	
-	public String getName() {
+	public String getUsername() {
 		return username;
 	}
 	
-	public void setName(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	
@@ -25,11 +24,5 @@ public class UsuarioRegisterDto implements Serializable {
 		this.password = password;
 	}
 	
-	public String getAvatar() {
-		return joinDate;
-	}
-	
-	public void setAvatar(String joinDate) {
-		this.joinDate = joinDate;
-	}
 }
+
