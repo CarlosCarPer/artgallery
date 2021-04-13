@@ -14,5 +14,4 @@ export interface Usuario {
   comments?: Comment;
   avatar?: string;
 
-
 }

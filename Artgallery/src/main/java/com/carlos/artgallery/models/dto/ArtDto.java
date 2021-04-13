@@ -1,7 +1,7 @@
 package com.carlos.artgallery.models.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+
 
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -15,7 +15,7 @@ public class ArtDto implements Serializable {
 	private String description;
 	private String image;
 	private double price;
-	private Date date;
+	private String date;
 	private UsuarioDto creator;
 	
 	public int getArtId() {
@@ -48,10 +48,10 @@ public class ArtDto implements Serializable {
 	public void setLikes(double price) {
 		this.price = price;
 	}
-	public Date getArtdate() {
+	public String getArtdate() {
 		return date;
 	}
-	public void setArtdate(Date date) {
+	public void setArtdate(String date) {
 		this.date = date;
 	}
 	public UsuarioDto getCreator() {
