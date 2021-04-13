@@ -33,11 +33,11 @@ public class InsertArtDto {
 		this.image = image;
 	}
 	
-	public double getPrice() {
+	public double getLikes() {
 		return likes;
 	}
 	
-	public void setPrice(int likes) {
+	public void setLikes(int likes) {
 		this.likes = likes;
 	}
 	

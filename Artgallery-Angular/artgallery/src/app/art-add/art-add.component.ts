@@ -1,4 +1,3 @@
-import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Art } from '../interfaces/art';
 import { Router } from '@angular/router';
@@ -13,14 +12,8 @@ import { UsuarioService } from '../services/usuario.service';
 export class ArtAddComponent implements OnInit {
   nombreImagen = '';
   tags: string[] = [];
-  newArt: Art = {
-      title: '',
-      description: '',
-      url: '',
-      tags: '',
-      likes: 0
-  };
-  userid=1;
+  newArt!: Art;
+  userid=4;
   @Output() added = new EventEmitter<Art>();
 
   constructor(private artsService: ArtsService, private usuarioService: UsuarioService, private router: Router) { }
@@ -31,10 +24,12 @@ export class ArtAddComponent implements OnInit {
 
   addArt(): void {
     this.usuarioService.get(this.userid).subscribe(
-      user=>this.newArt.user=user
-    );
-    this.artsService.insert(this.newArt, 1).subscribe(
-      art => this.router.navigate(['/artes'])
+      user =>{
+        this.newArt.user=user;
+        this.artsService.insert(this.newArt,1).subscribe(
+          art => this.router.navigate(['/arts'])
+        );
+      }
     );
     // tags = this.newArt.tags.fore
   }
@@ -52,13 +47,14 @@ export class ArtAddComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.newArt = {
+    this.newArt ={
       title: '',
       description: '',
       url: '',
       tags: '',
       likes: 0
     };
-    this.nombreImagen = '';
+    this.userid=4;
+    this.nombreImagen;
   }
 }

@@ -17,7 +17,7 @@ export class ArtItemComponent implements OnInit {
   }
 
   deleteArt(): void {
-    this.artsService.delete(this.art.artid as number).subscribe(
+    this.artsService.delete(this.art.artId as number).subscribe(
       () => this.deleted.emit()
     );
   }

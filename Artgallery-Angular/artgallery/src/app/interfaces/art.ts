@@ -2,7 +2,7 @@ import { Usuario } from "./usuario";
 
 export interface Art {
 
-  artid?: number;
+  artId?: number;
   title: string;
   description: string;
   author?: string;

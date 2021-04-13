@@ -13,14 +13,11 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Usuario[]> {
-    return this.http.get<UsuariosResponse>('usuarios').pipe(
-      map(resp => resp.users));
+    return this.http.get<Usuario[]>('usuers');
   }
 
   get(id: number): Observable<Usuario> {
-    return this.http.get<UsuarioResponse>('usuarios/' + id).pipe(
-      map(resp => resp.user)
-    );
+    return this.http.get<Usuario>('users/' + id);
   }
 
   insert(usuario: Usuario, id: number): Observable<Usuario> {

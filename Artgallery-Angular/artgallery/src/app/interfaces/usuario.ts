@@ -4,7 +4,7 @@ import { Art } from "./art";
 export interface Usuario {
 
   userid?: number;
-  username: string;
+  username?: string;
   password: string;
   description?: string;
   pics?: string;

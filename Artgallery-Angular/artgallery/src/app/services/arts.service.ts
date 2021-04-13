@@ -12,14 +12,11 @@ export class ArtsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Art[]> {
-    return this.http.get<ArtsResponse>('arts').pipe(
-      map(resp => resp.arts));
+    return this.http.get<Art[]>('arts');
   }
 
   get(id: number): Observable<Art> {
-    return this.http.get<ArtResponse>('arts/' + id).pipe(
-      map(resp => resp.art)
-    );
+    return this.http.get<Art>('arts/' + id);
   }
 
   insert(art: Art, id: number): Observable<Art> {

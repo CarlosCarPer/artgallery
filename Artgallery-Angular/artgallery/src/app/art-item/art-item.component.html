@@ -1,17 +1,17 @@
 <img class="card-img-top" [src]="art.url" />
 <div class="card-body">
   <h4 class="card-title">
-    <a [routerLink]="['/arts', art.artid]">{{ art.title | titlecase }}</a>
+    <a [routerLink]="['/arts', art.artId]">{{ art.title | titlecase }}</a>
   </h4>
   <p class="card-text" [innerText]="art.description"></p>
   <div class="row mr-4 align-items-center">
     <img
-      [src]="art.user.avatar"
+      [src]="art.user?.avatar"
       class="rounded-circle col"
       style="width: 50px"
     />
     <div class="col">
-      <small>{{ art.user.username }}</small>
+      <small>{{ art.user?.username }}</small>
     </div>
     <button class="btn btn-danger col" (click)="deleteArt()">Delete</button>
   </div>

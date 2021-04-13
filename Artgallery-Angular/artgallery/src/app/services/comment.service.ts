@@ -12,15 +12,11 @@ export class CommentsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Comment[]> {
-    return this.http.get<CommentsResponse>('comments').pipe(
-      map(resp => resp.comments)
-      );
+    return this.http.get<Comment[]>('comments');
   }
 
   get(id: number): Observable<Comment> {
-    return this.http.get<CommentResponse>('comments/' + id).pipe(
-      map(resp => resp.comment)
-    );
+    return this.http.get<Comment>('comments/' + id);
   }
 
   insert(comment: Comment, id: number): Observable<Comment> {

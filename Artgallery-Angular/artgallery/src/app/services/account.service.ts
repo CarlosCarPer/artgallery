@@ -11,14 +11,12 @@ import { AccountResponse, AccountsResponse } from '../interfaces/responses';
 export class AccountService {
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<AccountsResponse> {
-    return this.http.get<AccountsResponse>('accounts');
+  getAll(): Observable<Account[]> {
+    return this.http.get<Account[]>('accounts');
   }
 
   get(id: number): Observable<Account> {
-    return this.http.get<AccountResponse>('accounts/' + id).pipe(
-      map(resp => resp.account)
-    );
+    return this.http.get<Account>('accounts/' + id);
   }
 
   insert(account: Account, id: number): Observable<Account> {
