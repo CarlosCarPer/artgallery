@@ -12,7 +12,9 @@ export class CommentsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Comment[]> {
-    return this.http.get<Comment[]>('comments');
+    return this.http.get<CommentsResponse>('comments').pipe(
+      map(resp => resp.comments)
+      );
   }
 
   get(id: number): Observable<Comment> {

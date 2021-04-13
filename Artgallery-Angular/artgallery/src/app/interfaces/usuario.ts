@@ -5,7 +5,7 @@ export interface Usuario {
 
   userid?: number;
   username: string;
-  pass: string;
+  password: string;
   description?: string;
   pics?: string;
   Joindate?: string;

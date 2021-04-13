@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Art } from '../interfaces/art';
-import { ArtResponse } from '../interfaces/responses';
+import { ArtResponse, ArtsResponse } from '../interfaces/responses';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,8 @@ export class ArtsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Art[]> {
-    return this.http.get<Art[]>('arts');
+    return this.http.get<ArtsResponse>('arts').pipe(
+      map(resp => resp.arts));
   }
 
   get(id: number): Observable<Art> {
