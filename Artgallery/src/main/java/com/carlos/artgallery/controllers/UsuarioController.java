@@ -58,6 +58,7 @@ public class UsuarioController {
 	@PostMapping("/users")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario create(@RequestBody Usuario user) {
+		user.setAvatar("adios");
 		user.setJoinDate(new Date().toString());
 		userService.save(user);
 		return user;

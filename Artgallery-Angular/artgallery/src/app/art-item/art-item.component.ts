@@ -16,9 +16,4 @@ export class ArtItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteArt(): void {
-    this.artsService.delete(this.art.artId as number).subscribe(
-      () => this.deleted.emit()
-    );
-  }
 }

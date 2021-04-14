@@ -13,19 +13,19 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>('usuers');
+    return this.http.get<Usuario[]>('users');
   }
 
   get(id: number): Observable<Usuario> {
     return this.http.get<Usuario>('users/' + id);
   }
 
-  insert(usuario: Usuario, id: number): Observable<Usuario> {
-    return this.http.post<Usuario>(`usuarios/${id}`, usuario);
+  insert(usuario: Usuario ): Observable<Usuario> {
+    return this.http.post<Usuario>(`users`, usuario);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`usuarios/${id}`);
+    return this.http.delete<void>(`users/${id}`);
   }
 }
 

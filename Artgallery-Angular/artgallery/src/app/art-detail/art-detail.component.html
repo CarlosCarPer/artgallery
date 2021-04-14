@@ -1,8 +1,8 @@
-<art-item
-  class="card mb-4"
-  [art]="art"
-  (deleted)="goBack()"
-></art-item>
 <div>
   <button class="btn btn-primary mb-4" (click)="goBack()">Volver</button>
 </div>
+
+<art-item class="card mb-4" [art]="art" (deleted)="goBack()"></art-item>
+
+
+<button class="btn btn-danger" (click)="deleteArt()">Eliminar</button>

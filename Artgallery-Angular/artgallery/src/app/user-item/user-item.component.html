@@ -1,0 +1,14 @@
+
+<div class="card-body">
+  <h4 class="card-title">
+    <a [routerLink]="['/users', user.userid]">{{ user.username| titlecase }}</a>
+  </h4>
+  <p class="card-text" [innerText]="user.description"></p>
+  <div class="row mr-4 align-items-center">
+    <img [src]="user.avatar" class="rounded-circle col" style="width: 50px" />
+  </div>
+</div>
+
+<div class="card-footer text-muted">
+  {{ user.Joindate }}
+</div>

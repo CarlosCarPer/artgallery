@@ -4,7 +4,7 @@
       <a class="nav-link" href="#" (click)="orderDate()">Orden por fecha</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#" (click)="orderLikes()">Orden por likes</a>
+      <a class="nav-link" href="#" (click)="orderUsername()">Orden alfabéticamente</a>
     </li>
   </ul>
   <form class="form-inline">
@@ -20,16 +20,16 @@
 </nav>
 <div
   class="card-columns mt-4"
-  *ngIf="arts && arts.length; else noArts"
+  *ngIf="users && users.length; else noUsers"
 >
-  <art-item
+  <user-item
     class="card"
-    [art]="art"
-    (searchedArt)="searchArt(art)"
-    *ngFor="let art of arts | artFilter: search"
+    [user]="user"
+    (searchedUser)="searchUser(user)"
+    *ngFor="let user of users | userFilter: search"
   >
-  </art-item>
+  </user-item>
 </div>
-<ng-template #noArts>
-  <h3>No hay publicaciones disponibles</h3>
+<ng-template #noUsers>
+  <h3>No hay usuarios disponibles</h3>
 </ng-template>

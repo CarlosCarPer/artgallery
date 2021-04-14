@@ -3,30 +3,45 @@
     <legend>Crea una cuenta</legend>
 
     <div class="form-group">
-      <label for="username">Userame:</label>
+      <label for="username">Nombre de usuario:</label>
       <input
         type="text"
         class="form-control"
         id="username"
         name="nameUser"
-        placeholder="Username"
+        placeholder="Nombre de usuario"
+        required
         [(ngModel)]="newUser.username"
       />
     </div>
 
     <div class="form-group">
-      <label for="password">Password:</label>
+      <label for="password">Contraseña:</label>
       <input
         type="password"
         class="form-control"
         id="password"
         name="password"
-        placeholder="Password"
+        placeholder="Contraseña"
+        required
         [(ngModel)]="newUser.password"
       />
     </div>
+
     <div class="form-group">
-      <label for="image">Avatar image</label>
+      <label for="description">Descripción</label>
+      <textarea
+        class="form-control"
+        name="description"
+        placeholder="Descripción"
+        rows="3"
+        [(ngModel)]="newUser.description"
+      ></textarea>
+    </div>
+
+
+    <div class="form-group">
+      <label for="avatar">Foto de perfil</label>
       <input
         type="file"
         class="form-control"
@@ -36,6 +51,7 @@
         (change)="changeImage(fileImage)"
       />
     </div>
+
     <img
       *ngIf="newUser.avatar"
       [src]="newUser.avatar"
@@ -47,8 +63,8 @@
       [routerLink]="['/auth', 'login']"
       routerLinkActive="router-link-active"
       role="button"
-      >Go back</a
+      >Volver atrás</a
     >
-    <button type="submit" class="btn btn-primary">Create account</button>
+    <button type="submit" class="btn btn-primary">Crear cuenta</button>
   </form>
 </div>

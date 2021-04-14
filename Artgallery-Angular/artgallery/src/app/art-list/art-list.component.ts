@@ -20,7 +20,7 @@ export class ArtListComponent implements OnInit {
   }
 
   orderDate(): void {
-    this.arts.sort((e1, e2) => e1.artdate!.localeCompare(e2.artdate!));
+    this.arts.sort((e1, e2) => e1.artDate!.localeCompare(e2.artDate!));
     this.arts = [...this.arts];
   }
 
@@ -29,7 +29,7 @@ export class ArtListComponent implements OnInit {
     this.arts = [...this.arts];
   }
 
-  deleteArt(art: Art): void {
+  searchArt(art: Art): void {
     this.arts = this.arts.filter(e => e !== art);
   }
 

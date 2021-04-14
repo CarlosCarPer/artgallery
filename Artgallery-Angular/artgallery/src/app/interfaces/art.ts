@@ -9,7 +9,7 @@ export interface Art {
   url: string;
   tags: string;
   likes: number;
-  artdate?: string;
+  artDate?: string;
   user?: Usuario;
 
 }

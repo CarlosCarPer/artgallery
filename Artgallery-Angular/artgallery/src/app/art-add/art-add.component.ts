@@ -13,7 +13,7 @@ export class ArtAddComponent implements OnInit {
   nombreImagen = '';
   tags: string[] = [];
   newArt!: Art;
-  userid=4;
+  userid=3;
   @Output() added = new EventEmitter<Art>();
 
   constructor(private artsService: ArtsService, private usuarioService: UsuarioService, private router: Router) { }
@@ -26,7 +26,7 @@ export class ArtAddComponent implements OnInit {
     this.usuarioService.get(this.userid).subscribe(
       user =>{
         this.newArt.user=user;
-        this.artsService.insert(this.newArt,1).subscribe(
+        this.artsService.insert(this.newArt,3).subscribe(
           art => this.router.navigate(['/arts'])
         );
       }
@@ -54,7 +54,7 @@ export class ArtAddComponent implements OnInit {
       tags: '',
       likes: 0
     };
-    this.userid=4;
+    this.userid=3;
     this.nombreImagen;
   }
 }

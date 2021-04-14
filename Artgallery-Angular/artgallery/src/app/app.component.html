@@ -1,23 +1,53 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="#">ArtGallery</a>
   <ul class="navbar-nav mr-auto" *ngIf="logged">
+
     <li class="nav-item">
       <a
         class="nav-link"
         [routerLink]="['/arts']"
         [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }"
-        >Arts</a
+        >Inicio</a
       >
     </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/users']"
+        [routerLinkActive]="['active']"
+        >Usuarios</a
+      >
+    </li>
+
     <li class="nav-item">
       <a
         class="nav-link"
         [routerLink]="['/arts', 'add']"
         [routerLinkActive]="['active']"
-        >Añadir art</a
+        >Añadir arte</a
       >
     </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/arts', 'add']"
+        [routerLinkActive]="['active']"
+        >Perfil</a
+      >
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/arts', 'add']"
+        [routerLinkActive]="['active']"
+        >Editar Perfil</a
+      >
+    </li>
+
   </ul>
   <ul class="navbar-nav" *ngIf="logged">
     <li class="nav-item">

@@ -27,11 +27,12 @@ export class RegistroComponent implements OnInit {
     const reader: FileReader = new FileReader();
     reader.readAsDataURL(fileInput.files[0]);
     reader.addEventListener('loadend', (e) => {
-      this.newUser.avatar = reader.result as string;
+    this.newUser.avatar = reader.result as string;
     });
+
   }
 
-  registrarse() {
+  registrarse() { console.log(this.newUser);
     this.authService.registro(this.newUser).subscribe(
       () => this.router.navigate(['/auth', 'login']),
       error => console.log(error)

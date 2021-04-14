@@ -14,6 +14,11 @@ import { ArtDetailComponent } from './art-detail/art-detail.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserItemComponent } from './user-item/user-item.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserFilterPipe } from './pipes/user-filter.pipe';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
     ArtAddComponent,
     ArtDetailComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    UserListComponent,
+    UserItemComponent,
+    UserDetailComponent,
+    UserFilterPipe,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

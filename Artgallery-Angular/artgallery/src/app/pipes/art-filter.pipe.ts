@@ -12,7 +12,4 @@ export class ArtFilterPipe implements PipeTransform {
            e.description.toLowerCase().includes(filtro.toLowerCase())
     );
   }
-
-
-
 }

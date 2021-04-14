@@ -5,19 +5,17 @@
   </h4>
   <p class="card-text" [innerText]="art.description"></p>
   <div class="row mr-4 align-items-center">
-    <img
-      [src]="art.user?.avatar"
-      class="rounded-circle col"
-      style="width: 50px"
-    />
+    <img [src]="art.user?.avatar" class="rounded-circle col" style="width: 50px" />
     <div class="col">
       <small>{{ art.user?.username }}</small>
     </div>
-    <button class="btn btn-danger col" (click)="deleteArt()">Delete</button>
   </div>
 </div>
-<div class="card-footer text-muted">
-  {{ art.artdate | date: "dd/MM/yyyy" }}
-  <span class="float-right">{{ art.likes}}</span>
-</div>
 
+<div class="card-footer text-muted">
+  Autor: {{ art.author}}
+  <span class="float-right">Likes: {{ art.likes}}</span>
+</div>
+<div class="card-footer text-muted">
+  {{ art.artDate }}
+</div>

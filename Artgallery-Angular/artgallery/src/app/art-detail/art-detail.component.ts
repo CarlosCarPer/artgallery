@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Art } from '../interfaces/art';
+import { ArtsService } from '../services/arts.service';
 
 @Component({
   selector: 'art-detail',
@@ -9,16 +11,26 @@ import { Art } from '../interfaces/art';
 })
 export class ArtDetailComponent implements OnInit {
   art!: Art;
+  @Output() deleted = new EventEmitter<void>();
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private artsService: ArtsService) {}
 
   ngOnInit(): void {
     this.route.data.subscribe(
       data => this.art = data.art
     );
+    console.log(this.art.artDate);
   }
+
 
   goBack() {
     this.router.navigate(['/arts']);
+  }
+
+
+  deleteArt(): void {
+    this.artsService.delete(this.art.artId as number).subscribe(
+      () => this.deleted.emit()
+    );
   }
 }

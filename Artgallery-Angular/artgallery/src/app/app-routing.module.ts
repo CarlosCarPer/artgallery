@@ -8,6 +8,9 @@ import { ArtResolver } from './resolvers/art.resolver';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginGuard } from './guards/login.guard';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserResolver } from './resolvers/user.resolver';
 
 const ROUTES: Routes = [
   {
@@ -34,6 +37,19 @@ const ROUTES: Routes = [
     canActivate: [LoginGuard],
     resolve: {
       art: ArtResolver
+    }
+  },
+  {
+    path: 'users',
+    component: UserListComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'users/:id',
+    component: UserDetailComponent,
+    canActivate: [LoginGuard],
+    resolve: {
+      user: UserResolver
     }
   },
   {
