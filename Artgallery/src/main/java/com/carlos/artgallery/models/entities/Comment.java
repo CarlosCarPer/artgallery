@@ -26,6 +26,8 @@ public class Comment implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private int commentId;
 	@JsonIgnore
+	private Art art;
+	@JsonIgnore
 	private Comment comment;
 	@JsonIgnore
 	private Usuario usuario;
@@ -64,6 +66,16 @@ public class Comment implements java.io.Serializable {
 
 	public void setCommentId(int commentId) {
 		this.commentId = commentId;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "art_id", nullable = false)
+	public Art getArt() {
+		return this.art;
+	}
+
+	public void setArt(Art art) {
+		this.art = art;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

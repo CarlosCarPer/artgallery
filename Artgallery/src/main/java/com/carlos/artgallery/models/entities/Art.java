@@ -1,16 +1,15 @@
 package com.carlos.artgallery.models.entities;
-// Generated 12 abr. 2021 10:58:46 by Hibernate Tools 5.2.12.Final
+// Generated 14 abr. 2021 19:35:51 by Hibernate Tools 5.2.12.Final
 
-
-
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -33,6 +32,7 @@ public class Art implements java.io.Serializable {
 	private String tags;
 	private Integer likes;
 	private String artDate;
+	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public Art() {
 	}
@@ -46,7 +46,7 @@ public class Art implements java.io.Serializable {
 	}
 
 	public Art(int artId, Usuario usuario, String title, String description, String author, String url, String tags,
-			Integer likes, String artDate) {
+			Integer likes, String artDate, Set<Comment> comments) {
 		this.artId = artId;
 		this.usuario = usuario;
 		this.title = title;
@@ -56,10 +56,11 @@ public class Art implements java.io.Serializable {
 		this.tags = tags;
 		this.likes = likes;
 		this.artDate = artDate;
+		this.comments = comments;
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "art_id", unique = true, nullable = false)
 	public int getArtId() {
 		return this.artId;
@@ -140,6 +141,15 @@ public class Art implements java.io.Serializable {
 
 	public void setArtDate(String artDate) {
 		this.artDate = artDate;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "art")
+	public Set<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
 	}
 
 }
