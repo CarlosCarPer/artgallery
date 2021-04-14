@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="#">ArtGallery</a>
-  <ul class="navbar-nav mr-auto" *ngIf="logged">
+  <ul class="navbar-nav mr-auto">
 
     <li class="nav-item">
       <a
@@ -11,16 +11,16 @@
         >Inicio</a
       >
     </li>
-
     <li class="nav-item">
       <a
         class="nav-link"
         [routerLink]="['/users']"
         [routerLinkActive]="['active']"
-        >Usuarios</a
+        >Artistas</a
       >
     </li>
-
+  </ul>
+  <ul class="navbar-nav mr-auto" *ngIf="logged">
     <li class="nav-item">
       <a
         class="nav-link"
@@ -29,7 +29,6 @@
         >Añadir arte</a
       >
     </li>
-
     <li class="nav-item">
       <a
         class="nav-link"
@@ -38,20 +37,36 @@
         >Perfil</a
       >
     </li>
-
     <li class="nav-item">
       <a
         class="nav-link"
-        [routerLink]="['/arts', 'add']"
+        [routerLink]="['/users']"
         [routerLinkActive]="['active']"
         >Editar Perfil</a
       >
     </li>
-
   </ul>
   <ul class="navbar-nav" *ngIf="logged">
     <li class="nav-item">
-    <a class="nav-link logout-link" (click)="logout()">Salir</a>
+    <a class="nav-link logout-link" href="#" (click)="logout()">Salir</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav" *ngIf="!logged">
+    <li class="nav-item">
+      <a
+        class="nav-link login"
+        [routerLink]="['/auth/register']"
+        [routerLinkActive]="['active']"
+        >Crear cuenta</a
+      >
+    </li>
+    <li class="nav-item">
+    <a
+      class="nav-link login"
+      [routerLink]="['/auth/login']"
+      [routerLinkActive]="['active']"
+      >Iniciar Sesión</a
+    >
     </li>
   </ul>
 </nav>

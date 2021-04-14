@@ -23,8 +23,7 @@ const ROUTES: Routes = [
   },
   {
     path: 'arts',
-    component: ArtListComponent,
-    canActivate: [LoginGuard]
+    component: ArtListComponent
   },
   {
     path: 'arts/add',
@@ -34,20 +33,17 @@ const ROUTES: Routes = [
   {
     path: 'arts/:id',
     component: ArtDetailComponent,
-    canActivate: [LoginGuard],
     resolve: {
       art: ArtResolver
     }
   },
   {
     path: 'users',
-    component: UserListComponent,
-    canActivate: [LoginGuard]
+    component: UserListComponent
   },
   {
     path: 'users/:id',
     component: UserDetailComponent,
-    canActivate: [LoginGuard],
     resolve: {
       user: UserResolver
     }

@@ -19,7 +19,6 @@ export class ArtDetailComponent implements OnInit {
     this.route.data.subscribe(
       data => this.art = data.art
     );
-    console.log(this.art.artDate);
   }
 
 

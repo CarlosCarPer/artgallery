@@ -69,6 +69,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
 		user.setJoinDate(new Date().toString());
 		user.setPass(securityUtils.encodePassword(userDto.getPassword()));
 		user.setUsername(userDto.getUsername());
+		user.setAvatar(userDto.getAvatar());
+		user.setDescription(userDto.getDescription());
 		
 		this.usersRepository.save(user);
 	}

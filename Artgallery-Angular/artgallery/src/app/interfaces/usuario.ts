@@ -3,7 +3,7 @@ import { Art } from "./art";
 
 export interface Usuario {
 
-  userid?: number;
+  userId?: number;
   username?: string;
   password: string;
   description?: string;
