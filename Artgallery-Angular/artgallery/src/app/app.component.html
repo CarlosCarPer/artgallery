@@ -29,22 +29,14 @@
         >Añadir arte</a
       >
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a
         class="nav-link"
-        [routerLink]="['/arts', 'add']"
+        [routerLink]="['/users', id]"
         [routerLinkActive]="['active']"
         >Perfil</a
       >
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        [routerLink]="['/users']"
-        [routerLinkActive]="['active']"
-        >Editar Perfil</a
-      >
-    </li>
+    </li> -->
   </ul>
   <ul class="navbar-nav" *ngIf="logged">
     <li class="nav-item">
@@ -65,7 +57,7 @@
       class="nav-link login"
       [routerLink]="['/auth/login']"
       [routerLinkActive]="['active']"
-      >Iniciar Sesión</a
+      >Iniciar sesión</a
     >
     </li>
   </ul>
