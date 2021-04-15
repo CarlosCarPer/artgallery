@@ -10,6 +10,5 @@ export interface Art {
   tags: string;
   likes: number;
   artDate?: string;
-  user?: Usuario;
-
+  comments?: Comment[];
 }

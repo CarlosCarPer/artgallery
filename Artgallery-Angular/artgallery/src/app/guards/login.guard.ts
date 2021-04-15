@@ -16,7 +16,7 @@ export class LoginGuard implements CanActivate {
         this.authService.logged$.next(true);
         return true;
       }
-      return this.router.createUrlTree(['/auth', 'login']);
+    return this.router.createUrlTree(['/auth', 'login']);
   }
 
 }

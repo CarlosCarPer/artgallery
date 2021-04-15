@@ -9,7 +9,7 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'angular-arts';
-  logged = false;
+  logged = (localStorage.getItem('token') == null)? false : true;
 
   constructor(private authService: AuthService, private router: Router) {}
 

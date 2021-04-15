@@ -13,7 +13,6 @@ export class ArtAddComponent implements OnInit {
   nombreImagen = '';
   tags: string[] = [];
   newArt!: Art;
-  userid=3;
   @Output() added = new EventEmitter<Art>();
 
   constructor(private artsService: ArtsService, private usuarioService: UsuarioService, private router: Router) { }
@@ -23,17 +22,15 @@ export class ArtAddComponent implements OnInit {
   }
 
   addArt(): void {
-    this.usuarioService.get(this.userid).subscribe(
-      user =>{
-        this.newArt.user=user;
-        this.artsService.insert(this.newArt,3).subscribe(
-          art => this.router.navigate(['/arts'])
-        );
-      }
-    );
+    this.artsService.insert(this.newArt,this.getUserId()).subscribe(
+      art => this.router.navigate(['/arts'])
+      );
     // tags = this.newArt.tags.fore
   }
 
+  getUserId() {
+    return JSON.parse(atob(localStorage.getItem('token')!.split('.')[1])).userid;
+  }
 
   changeImage(fileInput: HTMLInputElement): void {
     if (!fileInput.files || fileInput.files.length === 0) {
@@ -52,9 +49,9 @@ export class ArtAddComponent implements OnInit {
       description: '',
       url: '',
       tags: '',
-      likes: 0
+      likes: 0,
+      comments: []
     };
-    this.userid=3;
     this.nombreImagen;
   }
 }
