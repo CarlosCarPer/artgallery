@@ -6,7 +6,7 @@
       class="form-control"
       name="title"
       [(ngModel)]="newArt.title"
-      placeholder="Enter title"
+      placeholder="Intruduce un título"
     />
   </div>
 
@@ -18,6 +18,17 @@
       rows="3"
       [(ngModel)]="newArt.description"
     ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="tags">Tags</label>
+    <input
+      type="text"
+      class="form-control"
+      name="tags"
+      [(ngModel)]="tags"
+      placeholder="e.g. photo, pintura acrílica, anime..."
+    />
   </div>
 
   <div class="form-group">

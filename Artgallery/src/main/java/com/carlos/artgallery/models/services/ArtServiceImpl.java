@@ -24,7 +24,6 @@ public class ArtServiceImpl implements IArtService {
 	@Override
 	@Transactional(readOnly=true)
 	public Art findById(Integer id) {
-		// TODO Auto-generated method stub
 		return artDao.findById(id).orElse(null);
 	}
 	

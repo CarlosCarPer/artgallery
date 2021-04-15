@@ -62,7 +62,7 @@ public class CommentController {
 	@PostMapping("/comments/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Comment create(@RequestBody Comment comment, @PathVariable int id) {
-		comment.setCommentDate(new Date().toString());
+		comment.setCommentDate(new Date().toString().substring(0, 10));
 		comment.setUsuario(userService.findById(id));
 		comment.setLikes(0);
 		commentService.save(comment);

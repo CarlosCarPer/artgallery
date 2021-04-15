@@ -59,7 +59,7 @@ public class UsuarioController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario create(@RequestBody Usuario user) {
 		user.setAvatar("adios");
-		user.setJoinDate(new Date().toString());
+		user.setJoinDate(new Date().toString().substring(0, 10));
 		userService.save(user);
 		return user;
 	}

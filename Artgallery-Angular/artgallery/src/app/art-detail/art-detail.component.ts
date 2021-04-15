@@ -12,6 +12,7 @@ import { ArtsService } from '../services/arts.service';
 export class ArtDetailComponent implements OnInit {
   art!: Art;
   @Output() deleted = new EventEmitter<void>();
+  logged = (localStorage.getItem('token') == null)? false : true;
 
   constructor(private route: ActivatedRoute, private router: Router, private artsService: ArtsService) {}
 
