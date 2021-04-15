@@ -32,7 +32,7 @@ export class RegistroComponent implements OnInit {
 
   }
 
-  registrarse() { console.log(this.newUser);
+  registrarse() {
     this.authService.registro(this.newUser).subscribe(
       () => this.router.navigate(['/auth', 'login']),
       error => console.log(error)

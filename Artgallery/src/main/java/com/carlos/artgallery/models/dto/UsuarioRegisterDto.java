@@ -6,7 +6,7 @@ public class UsuarioRegisterDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String username;
-	private String password;
+	private String pass;
 	private String avatar;
 	private String description;
 	
@@ -18,12 +18,12 @@ public class UsuarioRegisterDto implements Serializable {
 		this.username = username;
 	}
 	
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
 	}
 	
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassw(String pass) {
+		this.pass = pass;
 	}
 	
 	public String getAvatar() {

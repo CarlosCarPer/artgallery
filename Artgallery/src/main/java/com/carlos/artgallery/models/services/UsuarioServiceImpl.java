@@ -67,7 +67,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	public void register(UsuarioRegisterDto userDto) throws NoSuchAlgorithmException {
 		Usuario user = new Usuario();
 		user.setJoinDate(new Date().toString());
-		user.setPass(securityUtils.encodePassword(userDto.getPassword()));
+		user.setPass(securityUtils.encodePassword(userDto.getPass()));
 		user.setUsername(userDto.getUsername());
 		user.setAvatar(userDto.getAvatar());
 		user.setDescription(userDto.getDescription());
