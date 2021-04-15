@@ -1,10 +1,10 @@
 export interface Account {
 
-  accountid?: number;
+  accountId?: number;
   platform: string;
   username: string;
   pass: string;
-  urL: string;
-  userid: number;
+  url: string;
+
 
 }

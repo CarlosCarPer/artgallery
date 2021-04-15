@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit {
   }
 
   orderDate(): void {
-    this.users.sort((e1, e2) => e1.Joindate!.localeCompare(e2.Joindate!));
+    this.users.sort((e1, e2) => e1.joinDate!.localeCompare(e2.joinDate!));
     this.users = [...this.users];
   }
 

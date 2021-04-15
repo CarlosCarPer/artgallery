@@ -5,13 +5,13 @@ export interface Usuario {
 
   userId?: number;
   username?: string;
-  password: string;
+  pass: string;
   description?: string;
   pics?: string;
-  Joindate?: string;
-  arts?: Art;
-  accounts?: Account;
-  comments?: Comment;
+  joinDate?: string;
+  arts?: Art[];
+  accounts?: Account[];
+  comments?: Comment[];
   avatar?: string;
 
 }

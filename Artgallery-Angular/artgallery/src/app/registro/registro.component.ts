@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class RegistroComponent implements OnInit {
   newUser: Usuario = {
     username: '',
-    password: '',
+    pass: '',
     avatar: ''
   };
 

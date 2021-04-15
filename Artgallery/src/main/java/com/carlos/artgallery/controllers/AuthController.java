@@ -34,7 +34,7 @@ public class AuthController {
 
 	@PostMapping("/login")
 	public ResponseEntity<ResponseLoginDto> login(@RequestBody UsuarioLoginDto userLogin) throws NoSuchAlgorithmException {
-		Usuario user = usersService.login(userLogin.getUsername(), userLogin.getPassword());
+		Usuario user = usersService.login(userLogin.getUsername(), userLogin.getPass());
 
 		if (user != null) {
 			return ResponseEntity.ok().body(new ResponseLoginDto(getToken(user)));
